@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  calibre:
+    image: capybara1/calibre:1
+    environment:
+      USERNAME: myuser
+      PASSWORD: mypassword
+    ports:
+      - 8081:8080
+    volumes:
+      - calibre_data:/data
+
+volumes:
+  calibre_data:
