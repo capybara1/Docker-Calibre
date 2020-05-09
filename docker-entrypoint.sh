@@ -1,7 +1,10 @@
 #!/bin/sh
 
-if [ ! -f /data/metadata.db ]; then
-	/opt/calibre/calibredb add /tmp/welcome.html --library-path /data
+LIBRARY_PATH="/data/${LIBRARY:-default}"
+
+if [ ! -f "$LIBRARY_PATH/metadata.db" ]; then
+	mkdir -p "$LIBRARY_PATH"
+	/opt/calibre/calibredb add /tmp/welcome.html --library-path "$LIBRARY_PATH"
 fi
 
 if [ ! -f /data/users.sqlite ]; then
@@ -19,4 +22,8 @@ if [ ! -f /data/users.sqlite ]; then
 	EOF
 fi
 
-exec /opt/calibre/calibre-server --log /dev/stdout --listen-on 0.0.0.0 --port 8080 --enable-auth --userdb /data/users.sqlite /data
+exec /opt/calibre/calibre-server \
+	--log /dev/stdout \
+	--listen-on 0.0.0.0 --port 8080 \
+	--enable-auth --userdb /data/users.sqlite \
+	"$LIBRARY_PATH"

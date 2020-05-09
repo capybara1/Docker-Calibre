@@ -6,9 +6,10 @@ However, since it is a headless installation, the main intend is to use it as
 
 An example for a `docker-compose` project can be found [here](./docker-compose.yml).
 
-The following environment variables may be used to define username and password of an initial user:
+The following environment variables may be used to define  username, password and library of an initial user:
 
 | Variable | Default |
 |----------|---------|
+| LIBRARY  | default |
 | USERNAME | default |
 | PASSWORD | default |
