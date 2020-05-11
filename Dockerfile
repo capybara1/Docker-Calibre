@@ -15,7 +15,7 @@ LABEL org.label-schema.schema-version="1.0" \
 COPY welcome.html /tmp
 COPY docker-entrypoint.sh /
 VOLUME /data
-RUN apk --no-cache --update add bash expect ca-certificates wget python gcc xz xdg-utils mesa-gl qt5-qtbase-x11 \
+RUN apk --no-cache --update add bash expect ca-certificates wget python gcc xz xdg-utils mesa-gl qt5-qtbase-x11 nss \
  && wget -nv -O install.sh https://download.calibre-ebook.com/linux-installer.sh \
  && chmod +x install.sh \
  && /install.sh isolated=True \

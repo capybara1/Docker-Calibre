@@ -23,7 +23,6 @@ if [ ! -f /data/users.sqlite ]; then
 fi
 
 exec /opt/calibre/calibre-server \
-	--log /dev/stdout \
 	--listen-on 0.0.0.0 --port 8080 \
 	--enable-auth --userdb /data/users.sqlite \
-	"$LIBRARY_PATH"
+	"$@" "$LIBRARY_PATH"
